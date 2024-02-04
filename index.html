@@ -89,10 +89,10 @@
                 function (meshes) {
                 meshes[0].scaling=new BABYLON.Vector3(4.0, 4.0, 4.0);
         
-                const col = new BABYLON.StandardMaterial("Ground Material", scene);
-                col.diffuseColor = BABYLON.Color3.Red();
-                col.backFaceCulling(false);
-                meshes[1].material = col;
+                const mat = new BABYLON.StandardMaterial("mat", scene);
+                mat.diffuseColor = BABYLON.Color3.Red();
+                mat.backFaceCulling=false;
+                meshes[1].material = mat;
             });
 
   
