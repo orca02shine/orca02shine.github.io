@@ -87,10 +87,10 @@
 
      new BABYLON.SceneLoader.ImportMeshAsync("", "/models/", "lampshade.glb",scene,
                 function (meshes) {
-                meshes[0].scaling.scaleInPlace(20);
+                meshes[0].scaling=new BABYLON.Vector3(4.0, 4.0, 4.0);
         
                 scene.enablePrePassRenderer().subSurfaceConfiguration.metersPerUnit = 0.07;
-                mainMesh = meshes[1];
+                mainMesh = meshes[0];
                 mainMesh.material.subSurface.isScatteringEnabled = true;
                 mainMesh.material.metallic = 0
                 mainMesh.material.roughness = 0.670
