@@ -83,9 +83,8 @@
     });
     */
 
-     var glb =new BABYLON.SceneLoader.ImportMeshAsync("", "/models/", "lampshade.glb",scene,function(newMeshes){
-          newMeshes[0].scaling = new BABYLON.Vector3(0.0001, 0.0001, 0.0001);
-     });
+     var glb =new BABYLON.SceneLoader.ImportMeshAsync("", "/models/", "lampshade.glb",scene);
+            glb.scaling = new BABYLON.Vector3(0.001, 0.001, 0.001);
 
   
     /*
