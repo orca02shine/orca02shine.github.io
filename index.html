@@ -91,6 +91,7 @@
         
                 const col = new BABYLON.StandardMaterial("Ground Material", scene);
                 col.diffuseColor = BABYLON.Color3.Red();
+                col.backFaceCulling(false);
                 meshes[1].material = col;
             });
 
