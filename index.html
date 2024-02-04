@@ -82,8 +82,23 @@
         newMeshes[0].scaling = new BABYLON.Vector3(0.01, 0.01, 0.01);
     });
     */
+    
+    var mainMesh;
 
-     new BABYLON.SceneLoader.ImportMeshAsync("", "/models/", "lampshade.glb",scene);
+     new BABYLON.SceneLoader.ImportMeshAsync("", "/models/", "lampshade.glb",scene,
+                function (meshes) {
+                meshes[0].scaling.scaleInPlace(20);
+        
+                scene.enablePrePassRenderer().subSurfaceConfiguration.metersPerUnit = 0.07;
+                mainMesh = meshes[1];
+                mainMesh.material.subSurface.isScatteringEnabled = true;
+                mainMesh.material.metallic = 0
+                mainMesh.material.roughness = 0.670
+                scene.debugLayer.select(mainMesh.material, "SUBSURFACE");
+                mainMesh.material.subSurface.scatteringDiffusionProfile = new BABYLON.Color3(0.750, 0.25, 0.20);
+                
+                scene.enablePrePassRenderer().samples = 8;
+            });
 
   
     /*
