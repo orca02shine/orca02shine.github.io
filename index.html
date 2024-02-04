@@ -84,7 +84,9 @@
     */
 
      var glb =new BABYLON.SceneLoader.ImportMeshAsync("", "/models/", "lampshade.glb",scene);
-            glb.scaling=new BABYLON.Vector3(2.0, 2.0, 10.0);
+            for(var i=0; i<glb.length; i++){
+                glb[i].scaling = new BABYLON.Vector3 (4.0,4.0,4.0);
+            }
 
   
     /*
