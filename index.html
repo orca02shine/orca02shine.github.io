@@ -76,12 +76,12 @@
     // Default intensity is 1. Let's dim the light a small amount
     light.intensity = 0.7;
 
-                
+    /*        
         BABYLON.SceneLoader.ImportMesh("", Assets.meshes.Yeti.rootUrl, Assets.meshes.Yeti.filename
     , scene, function(newMeshes){
         newMeshes[0].scaling = new BABYLON.Vector3(0.01, 0.01, 0.01);
     });
-    
+    */
 
      var glb =new BABYLON.SceneLoader.ImportMeshAsync("", "/models/", "lampshade.glb",scene,function(newMeshes){
           newMeshes[1].scaling = new BABYLON.Vector3(0.0001, 0.0001, 0.0001);
