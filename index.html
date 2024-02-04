@@ -79,12 +79,12 @@
                 
         BABYLON.SceneLoader.ImportMesh("", Assets.meshes.Yeti.rootUrl, Assets.meshes.Yeti.filename
     , scene, function(newMeshes){
-        newMeshes[0].scaling = new BABYLON.Vector3(0.05, 0.05, 0.05);
+        newMeshes[0].scaling = new BABYLON.Vector3(0.01, 0.01, 0.01);
     });
     
 
      var glb =new BABYLON.SceneLoader.ImportMeshAsync("", "/models/", "lampshade.glb",scene,function(newMeshes){
-          newMeshes[0].scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
+          newMeshes[1].scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
      });
 
   
