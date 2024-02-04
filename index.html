@@ -89,15 +89,9 @@
                 function (meshes) {
                 meshes[0].scaling=new BABYLON.Vector3(4.0, 4.0, 4.0);
         
-                scene.enablePrePassRenderer().subSurfaceConfiguration.metersPerUnit = 0.07;
-                mainMesh = meshes[0];
-                mainMesh.material.subSurface.isScatteringEnabled = true;
-                mainMesh.material.metallic = 0
-                mainMesh.material.roughness = 0.670
-                scene.debugLayer.select(mainMesh.material, "SUBSURFACE");
-                mainMesh.material.subSurface.scatteringDiffusionProfile = new BABYLON.Color3(0.750, 0.25, 0.20);
-                
-                scene.enablePrePassRenderer().samples = 8;
+                const groundMaterial = new BABYLON.StandardMaterial("Ground Material", scene);
+                groundMaterial.diffuseColor = BABYLON.Color3.Red();
+                meshes[0].material = groundMaterial;
             });
 
   
