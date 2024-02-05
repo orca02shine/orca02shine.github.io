@@ -76,10 +76,6 @@
     light.intensity = 0.7;
     light.diffuse=new BABYLON.Color3(1.0,0.95,0.9);
 
-
-
-    // Our built-in 'ground' shape.
-    var ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 6, height: 6}, scene);
     const mainMaterial=new BABYLON.PBRMaterial("MainMaterial", scene);
     mainMaterial.backFaceCulling=false;
     mainMaterial.albedoColor = BABYLON.Color3.White();
