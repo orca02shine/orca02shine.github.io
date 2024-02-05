@@ -71,18 +71,31 @@
     camera.attachControl(canvas, true);
 
     // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
-    var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+    var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 0, 0), scene);
 
     // Default intensity is 1. Let's dim the light a small amount
     light.intensity = 0.7;
 
-    /*        
-        BABYLON.SceneLoader.ImportMesh("", Assets.meshes.Yeti.rootUrl, Assets.meshes.Yeti.filename
-    , scene, function(newMeshes){
-        newMeshes[0].scaling = new BABYLON.Vector3(0.01, 0.01, 0.01);
-    });
-    */
-    
+    const mainMaterial=new BABYLON.PBRMaterial("MainMaterial", scene);
+    mainMaterial.backFaceCulling=false;
+    mainMaterial.albedoColor = BABYLON.Color3.White();
+    mainMaterial.metallic = 0;
+    mainMaterial.roughness = 0.26;
+    mainMaterial.transparencyMode = BABYLON.PBRMaterial.PBRMATERIAL_ALPHABLEND;
+
+    mainMaterial.sheen.isEnabled = true;
+    if(mainMaterial.sheen){
+        mainMaterial.sheen.color = BABYLON.Color3.FromHexString("#FA4B01");
+    }
+    // SSS things
+    mainMaterial.subSurface.tintColor = BABYLON.Color3.FromHexString("#FB8A46");
+    mainMaterial.subSurface.isTranslucencyEnabled = true;
+    if (mainMaterial.subSurface.isTranslucencyEnabled) {
+        mainMaterial.subSurface.translucencyIntensity = 0.1;
+        mainMaterial.subSurface.minimumThickness = 0.2;
+        mainMaterial.subSurface.maximumThickness = 1.0;
+    }
+   
     var mainMesh;
 
      new BABYLON.SceneLoader.ImportMesh("", "/models/", "lampshade.glb",scene,
@@ -92,19 +105,11 @@
                 const mat = new BABYLON.StandardMaterial("mat", scene);
                 mat.diffuseColor = BABYLON.Color3.Red();
                 mat.backFaceCulling=false;
-                meshes[1].material = mat;
+                meshes[1].material = mainMaterial;
             });
 
   
-    /*
-    // Our built-in 'ground' shape.
-    var ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 10, height: 10}, scene);
-
-    const groundMaterial = new BABYLON.StandardMaterial("Ground Material", scene);
-    let groundTexture = new BABYLON.Texture(Assets.textures.checkerboard_basecolor_png.rootUrl, scene);
-    groundMaterial.diffuseTexture = groundTexture;
-    ground.material = groundMaterial;
-    */
+   
     return scene;
 };
 
